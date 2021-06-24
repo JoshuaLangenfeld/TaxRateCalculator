@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Angular_ASPNETCore_Seed.Repository;
+using Angular_ASPNETCore_Seed.Services;
 
 namespace Angular_ASPNET_Core_Seed
 {
@@ -45,7 +47,11 @@ namespace Angular_ASPNET_Core_Seed
                     License = new OpenApiLicense { Name = "MIT", Url = new Uri("https://en.wikipedia.org/wiki/MIT_License") }
                 });
             });
-        }
+
+      services.AddTransient<ITaxRepository, TaxRepository>();
+      services.AddTransient<CalculateService>();
+      services.AddTransient<ZipCodeLookup>();
+    }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IAntiforgery antiforgery)
@@ -77,7 +83,7 @@ namespace Angular_ASPNET_Core_Seed
             });
 
             //This would need to be locked down as needed (very open right now)
-            app.UseCors((corsPolicyBuilder) => 
+            app.UseCors((corsPolicyBuilder) =>
             {
                 corsPolicyBuilder.AllowAnyOrigin();
                 corsPolicyBuilder.AllowAnyMethod();

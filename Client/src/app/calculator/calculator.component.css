@@ -1,0 +1,26 @@
+mat-card {
+  width: 50%;
+  margin: 1em;
+}
+
+.income-container {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calculate-container {
+  justify-content: space-evenly;
+  margin-top: 1em;
+}
+
+mat-radio-group {
+  margin-right: 5em;
+}
+
+mat-radio-button {
+  margin-right: 1em;
+}
+
+.top-space {
+  margin-top: 2em;
+}

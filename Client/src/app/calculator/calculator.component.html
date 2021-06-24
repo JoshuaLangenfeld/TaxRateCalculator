@@ -1,0 +1,49 @@
+<mat-card>
+  <mat-card-header
+    ><mat-card-title>Tax Calculator</mat-card-title></mat-card-header
+  >
+  <mat-card-content>
+    <div class="fx-col">
+      <div class="fx-row income-container">
+        <mat-radio-group aria-label="Select amount" [(ngModel)]="amount">
+          <mat-radio-button
+            [value]="i"
+            *ngFor="let amount of amounts; let i = index"
+            >{{ amount }}</mat-radio-button
+          >
+        </mat-radio-group>
+        <mat-form-field class="fx-fill">
+          <mat-label>Income</mat-label>
+          <input matInput [formControl]="income" placeholder="40000" value="" />
+        </mat-form-field>
+      </div>
+      <mat-form-field>
+        <mat-label>Zip Code</mat-label>
+        <input
+          matInput
+          [formControl]="zipCode"
+          maxlength="5"
+          placeholder="Ex. 66227"
+        />
+        <mat-hint align="end">{{ zipCode.value.length }} / 5</mat-hint>
+      </mat-form-field>
+      <div class="top-space">
+        <mat-divider></mat-divider>
+        <div class="fx-row calculate-container">
+          <div><strong>Tax Rate:</strong> {{ result }}</div>
+          <div><strong>Formula:</strong> {{ formula }}</div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="isDisabled"
+      (click)="calculate()"
+    >
+      Calculate
+    </button>
+  </mat-card-actions>
+</mat-card>

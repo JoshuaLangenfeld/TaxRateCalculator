@@ -1,4 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { DataService } from '../core/services/data.service';
 
@@ -8,13 +9,10 @@ import { DataService } from '../core/services/data.service';
 })
 export class HomeComponent implements OnInit {
 
-    message: string;
+    message$: Observable<string> = this.dataService.getMessage();
 
     constructor(private dataService: DataService) { }
 
     ngOnInit() {
-        this.dataService.getMessage().subscribe((message: string) => {
-            this.message = message;
-        })
     }
 }

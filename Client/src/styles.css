@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.fx-row {
+  display: flex;
+  flex-direction: row;
+}
+.fx-col {
+  display: flex;
+  flex-direction: column;
+}
+.fx-fill {
+  flex: auto;
+}
